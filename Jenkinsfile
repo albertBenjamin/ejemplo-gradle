@@ -3,10 +3,10 @@ pipeline {
 
     stages {
         stage('Pipeline') {
-        	septs{
-	            script {
+        	steps{
+	            script{
 					stage('build & test'){
-						
+
 					}
 					stage('sonar'){
 
