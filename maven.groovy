@@ -8,16 +8,15 @@ def callBuildandTest(){
   
 
         stage('Compile Code') {
-					bat './mvnw.cmd clean compile -e'         
+			bat './mvnw.cmd clean compile -e'         
         }
-		stage('Test Code') {
+/*		stage('Test Code') {
             
-					bat './mvnw.cmd clean test -e'  
+			bat './mvnw.cmd clean test -e'  
         }
 		stage('Jar Code') {
-            
 					bat './mvnw.cmd clean package -e'       
-    }
+    	}*/
 
 }
 
