@@ -6,12 +6,15 @@ pipeline {
         	steps{
 	            script{
 	            	def ejecucion 
+	            	filepathString =''
 	            		switch(params.buildtool){
 						case'gradle':
 						 ejecucion = load 'gradle.groovy'
+						 filepathString = 'build/libs/DevOpsUsach2020-0.0.1.jar'
 						break
 						default:
 						 ejecucion = load 'maven.groovy'
+						 filepathString = 'build/DevOpsUsach2020-0.0.1.jar'
 						break 
 					}
 
@@ -33,7 +36,7 @@ pipeline {
 					stage('nexus'){
 						nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'test-nexus', 
 						packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', 
-						filePath: 'build/DevOpsUsach2020-0.0.1.jar']], 
+						filePath: filepathString]], 
 						mavenCoordinate: [artifactId: 'DevOpsUsach2020', groupId: 'com.devopsusach2020', packaging: 'jar', version: '0.0.1']]]
 
 					}
