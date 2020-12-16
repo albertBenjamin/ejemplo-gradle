@@ -5,18 +5,20 @@ pipeline {
         stage('Pipeline') {
         	steps{
 	            script{
-					stage('build & test'){
-						bat './gradlew clean build'
-					}
+                    
+                    def ejecucion = params.buildtool == 'gradle' ? load 'gradle.groovy':  load 'maven.groovy'
+						
+					ejecucion.callBuildandTest()
+					
 					stage('sonar') {
                         def scannerHome = tool 'sonar-scanner';
                         withSonarQubeEnv('sonar') {
                             bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ejemplo-gradle -Dsonar.java.binaries=build" 
                          }                     
                     }
-					stage('run'){
-						bat 'start gradlew bootRun &'
-					}
+					
+					ejecucion.callRun()
+
 					stage('rest'){
 						 sleep 10
 						 bat 'curl http://localhost:8081/rest/mscovid/estadoMundial'
