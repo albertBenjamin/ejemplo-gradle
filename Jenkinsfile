@@ -6,11 +6,14 @@ pipeline {
         	steps{
 	            script{
 					stage('build & test'){
-
+						bat "./gradlew clean build"
 					}
-					stage('sonar'){
-
-					}
+					stage('sonar') {
+                        def scannerHome = tool 'sonar-scanner';
+                        withSonarQubeEnv('sonar') {
+                            bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=ejemplo-gradle -Dsonar.java.binaries=build" 
+                         }                     
+                    }
 					stage('run'){
 
 					}
