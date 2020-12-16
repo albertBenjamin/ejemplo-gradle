@@ -5,12 +5,13 @@ pipeline {
         stage('Pipeline') {
         	steps{
 	            script{
+	            	def ejecucion 
 	            		switch(params.buildtool){
 						case'gradle':
-						def ejecucion = load 'gradle.groovy'
+						 ejecucion = load 'gradle.groovy'
 						break
 						default:
-						def ejecucion = load 'maven.groovy'
+						ejecucion = load 'maven.groovy'
 						break 
 					}
 
