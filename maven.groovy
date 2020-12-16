@@ -21,12 +21,9 @@ def callBuildandTest(){
 }
 
 def callRun(){
-  stage(('Run Jar') {
-            steps {
-					bat 'start mvnw.cmd spring-boot:run'
-            }
+  stage('Run Jar') {
+				bat 'start mvnw.cmd spring-boot:run'
         }
-
 }
 
 return this;
