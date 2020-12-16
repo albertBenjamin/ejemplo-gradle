@@ -28,7 +28,7 @@ pipeline {
 
 					stage('rest'){
 						 sleep 10
-						 bat 'curl http://localhost:8081/rest/mscovid/estadoMundial'
+						 bat 'curl http://localhost:8083/rest/mscovid/estadoMundial'
 					}
 					stage('nexus'){
 						nexusPublisher nexusInstanceId: 'nexus', nexusRepositoryId: 'test-nexus', 
