@@ -6,8 +6,17 @@ pipeline {
         	steps{
 	            script{
                     
-                    def ejecucion = (params.buildtool == 'gradle') ? load 'gradle.groov' :  load 'maven.groovy'
+                   // def ejecucion = (params.buildtool == 'gradle') ? load 'gradle.groovy' :  load 'maven.groovy'
 						
+					switch(params.buildtool){
+						case'gradle':
+						def ejecucion = load 'gradle.groovy'
+						break
+						default:
+						def ejecucion = load 'maven.groovy'
+						break 
+					}
+					
 					ejecucion.callBuildandTest()
 					
 					stage('sonar') {
