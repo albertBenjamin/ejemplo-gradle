@@ -52,7 +52,7 @@ pipeline {
         }
         }
         success{
-			slackSend channel: 'U01DD0BR7H8', color: 'good', message: 'Ejecución exitosa'[env.CHANGE_AUTHOR][env.JOB_NAME][params.buildtool],' teamDomain: 'dipdevopsusach2020', tokenCredentialId: 'slack'
+			slackSend channel: 'U01DD0BR7H8', color: 'good', message: 'Ejecución exitosa'[env.CHANGE_AUTHOR][env.JOB_NAME][params.buildtool], teamDomain: 'dipdevopsusach2020', tokenCredentialId: 'slack'
         }
     }
 }
