@@ -14,7 +14,7 @@ pipeline {
 						break
 						default:
 						 ejecucion = load 'maven.groovy'
-						 filepathString = 'build/DevOpsUsach2020-0.0.1.jarr'
+						 filepathString = 'build/DevOpsUsach2020-0.0.1.jar'
 						break 
 					}
 
